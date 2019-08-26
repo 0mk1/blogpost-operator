@@ -1,2 +1,2 @@
-# kubernetes-python
-Programming Kubernetes with Python: Code and slides
+# blogpost-controller
+Part of "Programming Kubernetes with Python" talk
