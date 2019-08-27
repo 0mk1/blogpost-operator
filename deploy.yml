@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogpost-operator
+  namespace: blogposts
+spec:
+  selector:
+    matchLabels:
+      name: blogpost-operator
+  template:
+    metadata:
+      labels:
+        name: blogpost-operator
+    spec:
+      containers:
+      - name: blogpost-operator
+        image: t0ffi9/blogpost-operator:latest
+        imagePullPolicy: Always
+      serviceAccountName: blogpost-operator-sa

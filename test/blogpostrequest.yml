@@ -1,0 +1,7 @@
+apiVersion: merixstudio.com/v1
+kind: BlogPostRequest
+metadata:
+  name: kube-love
+spec:
+  title: I <3 Kubernetes
+  paragraphs: 10
