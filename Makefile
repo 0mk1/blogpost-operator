@@ -1,4 +1,4 @@
-setup: namespace crd rbac deploy
+setup: build-image push-image namespace crd rbac deploy
 
 build-image:
 	docker build . -t t0ffi9/blogpost-operator:latest
@@ -6,8 +6,9 @@ build-image:
 push-image:
 	docker push t0ffi9/blogpost-operator:latest
 
-minikube:
-	minikube start --kubernetes-version=v1.14.3 --vm-driver=hyperkit --extra-config=apiserver.authorization-mode=RBAC
+kind:
+	kind create cluster --image=kindest/node:v1.14.3 --wait=30s
+	export KUBECONFIG="$(kind get kubeconfig-path --name="kind")"
 
 namespace:
 	kubectl apply -f ./namespace.yml

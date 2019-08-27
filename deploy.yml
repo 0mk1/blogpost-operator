@@ -13,7 +13,12 @@ spec:
         name: blogpost-operator
     spec:
       containers:
-      - name: blogpost-operator
+      - name: blogpost
         image: t0ffi9/blogpost-operator:latest
         imagePullPolicy: Always
+        args: ["blogpost_controller.py"]
+      - name: blogpostrequest
+        image: t0ffi9/blogpost-operator:latest
+        imagePullPolicy: Always
+        args: ["blogpostrequest_controller.py"]
       serviceAccountName: blogpost-operator-sa

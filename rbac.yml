@@ -10,6 +10,12 @@ kind: ClusterRole
 metadata:
   name: blogpost-operator
 rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "create", "update", "delete", "patch", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "create", "update", "delete", "patch", "watch"]
   - apiGroups: ["merixstudio.com"]
     resources: ["blogposts", "blogpostrequests"]
     verbs: ["get", "list", "create", "update", "delete", "patch", "watch"]
@@ -28,7 +34,7 @@ roleRef:
   name: blogpost-operator
 subjects:
 - kind: ServiceAccount
-  name: blogpost-operator
+  name: blogpost-operator-sa
   namespace: blogposts
 
 ---
