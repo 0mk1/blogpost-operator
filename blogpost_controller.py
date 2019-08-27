@@ -74,8 +74,10 @@ def main():
 
     print("Operator started...")
     resource_version = ""
+    w = watch.Watch()
+
     while True:
-        stream = watch.Watch().stream(
+        stream = w.stream(
             crds.list_namespaced_custom_object,
             "merixstudio.com",
             "v1",
